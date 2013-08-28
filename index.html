@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.1, user-scalable=no"/>
@@ -23,16 +23,39 @@
     <script type="text/javascript" async="" src="js/getdata.js"></script>
     <script type="text/javascript">
         function initialize() {
-            var position = new AMap.LngLat(116.404, 39.915);//´´½¨ÖĞĞÄµã×ø±ê
-            var mapObj = new AMap.Map("map_container", {center: position});//´´½¨µØÍ¼ÊµÀı
+            var position = new AMap.LngLat(116.404, 39.915);//åˆ›å»ºä¸­å¿ƒç‚¹åæ ‡
+            var mapObj = new AMap.Map("map_container", {center: position});//åˆ›å»ºåœ°å›¾å®ä¾‹
             var marker = new AMap.Marker({
                 map: mapObj,
                 position: new AMap.LngLat(116.406326, 39.903942),
                 offset: new AMap.Pixel(-10, -34),
                 icon: "http://webapi.amap.com/images/0.png"
-            });// ×Ô¶¨Òå¹¹ÔìAMap.Marker¶ÔÏó
+            });// è‡ªå®šä¹‰æ„é€ AMap.Markerå¯¹è±¡
+
+            mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()
+            {
+                toolbar = new AMap.ToolBar();
+                toolbar.autoPosition=false; //åŠ è½½å·¥å…·æ¡
+                mapObj.addControl(toolbar);
+                overview = new AMap.OverView(); //åŠ è½½é¹°çœ¼
+                mapObj.addControl(overview);
+                scale = new AMap.Scale(); //åŠ è½½æ¯”ä¾‹å°º
+                mapObj.addControl(scale);
+            });
+
+            listener=AMap.event.addListener(mapObj,'click',fn);
+
+
+
+
             showUser();
         }
+
+        function fn(e){
+            document.getElementById("txt_x").value=e.lnglat.getLng();
+            document.getElementById("txt_y").value=e.lnglat.getLat();
+        }
+
 
         function JSON_test(o) {
             var user = {
@@ -45,7 +68,7 @@
             }
             var json_string = JSON.stringify(user);
             document.getElementById('txt_json').value = json_string;
-            alert("µã»÷È·¶¨ºó½«Ìá½»±íµ¥");
+            alert("ç‚¹å‡»ç¡®å®šåå°†æäº¤è¡¨å•");
             o.submit();
         }
 
@@ -57,26 +80,26 @@
     <div id="main_left" style=" display: block; background: white">
         <form id="form1" name="form1" method="post" action="php/insertdata.php"
               onsubmit="JSON_test(this);return flase;" style="margin-left: 50px;margin-top: 20px" >
-            <label for="txt_name">»ú¹¹Ãû³Æ</label>
+            <label for="txt_name">æœºæ„åç§°</label>
 
             <p><input type="text" name="txt_name" id="txt_name"/></p>
-            <label for="txt_address">µØÖ·</label>
+            <label for="txt_address">åœ°å€</label>
 
             <p><input type="text" name="txt_address" id="txt_address"/></p>
 
-            <p><label for="txt_phone">µç»°</label></p>
+            <p><label for="txt_phone">ç”µè¯</label></p>
 
             <p><input type="text" name="txt_phone" id="txt_phone"/></p>
 
-            <p><label for="txt_x">x×ø±ê</label></p>
+            <p><label for="txt_x">xåæ ‡</label></p>
 
             <p><input type="text" name="txt_x" id="txt_x"/></p>
 
-            <p><label for="txt_y">y×ø±ê</label></p>
+            <p><label for="txt_y">yåæ ‡</label></p>
 
             <p><input type="text" name="txt_y" id="txt_y"/></p>
 
-            <p><label for="txt_description">ÃèÊö</label></p>
+            <p><label for="txt_description">æè¿°</label></p>
 
             <p><input type="text" name="txt_description" id="txt_description"/></p>
 

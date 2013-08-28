@@ -17,19 +17,6 @@ function showUser() {
 function stateChanged() {
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
         showData(xmlHttp.responseText);
-        //xmlDoc = xmlHttp.responseXML;
-//        document.getElementById("firstname").innerHTML =
-//            xmlDoc.getElementsByTagName("firstname")[0].childNodes[0].nodeValue;
-//        document.getElementById("lastname").innerHTML =
-//            xmlDoc.getElementsByTagName("lastname")[0].childNodes[0].nodeValue;
-//        document.getElementById("job").innerHTML =
-//            xmlDoc.getElementsByTagName("job")[0].childNodes[0].nodeValue;
-//        document.getElementById("age_text").innerHTML = "Age: ";
-//        document.getElementById("age").innerHTML =
-//            xmlDoc.getElementsByTagName("age")[0].childNodes[0].nodeValue;
-//        document.getElementById("hometown_text").innerHTML = "<br/>From: ";
-//        document.getElementById("hometown").innerHTML =
-//            xmlDoc.getElementsByTagName("hometown")[0].childNodes[0].nodeValue;
     }
 }
 
@@ -43,6 +30,11 @@ function showData(str) {
     // var onerow = arr[0]
     for (i = 0; i < arr.length; i++) {
         string += arr[i]['id'] + ";\n";
+        string += arr[i]['name'] + ";\n";
+        string += arr[i]['address'] + ";\n";
+        string += arr[i]['x'] + ";\n";
+        string += arr[i]['y'] + ";\n";
+        string += arr[i]['description'] + ";\n";
     }
     document.getElementById('age_text').innerHTML = string;
 }

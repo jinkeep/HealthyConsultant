@@ -8,12 +8,12 @@ $mysql_password = 'kingsoft119';
 //改成自己的mysql数据库密码  
 $mysql_database = 'jinkeeper';
 //改成自己的mysql数据库名
-$mysql_table = 'bglab_wpassist_installinfo';
+$mysql_table = 'medicalservicedb';
 
 $db = mysql_connect($mysql_server_name, $mysql_username, $mysql_password)or die('Could not connect' . mysql_error());
 //echo '连接成功！';
 mysql_select_db($mysql_database, $db);
-$sql = "SELECT * FROM $mysql_table WHERE version = '1.2.0.0'";
+$sql = "SELECT * FROM $mysql_table";
 //$sql = "SELECT * FROM $mysql_table";
 $result = mysql_query($sql, $db);
 //$fields=mysql_list_fields($mysql_database,$mysql_table,$db); //列出test库friends表的信息

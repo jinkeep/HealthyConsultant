@@ -23,15 +23,30 @@
     <script type="text/javascript" async="" src="js/getdata.js"></script>
     <script type="text/javascript">
         function initialize() {
-            var position = new AMap.LngLat(116.404, 39.915);//åˆ›å»ºä¸­å¿ƒç‚¹åæ ‡
-            var mapObj = new AMap.Map("map_container", {center: position});//åˆ›å»ºåœ°å›¾å®ä¾‹
+            var position = new AMap.LngLat(116.404, 39.915);//´´½¨ÖĞĞÄµã×ø±ê
+            var mapObj = new AMap.Map("map_container", {center: position});//´´½¨µØÍ¼ÊµÀı
             var marker = new AMap.Marker({
                 map: mapObj,
                 position: new AMap.LngLat(116.406326, 39.903942),
                 offset: new AMap.Pixel(-10, -34),
                 icon: "http://webapi.amap.com/images/0.png"
-            });// è‡ªå®šä¹‰æ„é€ AMap.Markerå¯¹è±¡
+            });// ×Ô¶¨Òå¹¹ÔìAMap.Marker¶ÔÏó
             showUser();
+        }
+
+        function JSON_test(o) {
+            var user = {
+                name: document.getElementById('txt_name').value,
+                address: document.getElementById('txt_address').value,
+                x: document.getElementById('txt_x').value,
+                y: document.getElementById('txt_y').value,
+                phone: document.getElementById('txt_phone').value,
+                description: document.getElementById('txt_description').value
+            }
+            var json_string = JSON.stringify(user);
+            document.getElementById('txt_json').value = json_string;
+            alert("µã»÷È·¶¨ºó½«Ìá½»±íµ¥");
+            o.submit();
         }
 
     </script>
@@ -40,10 +55,37 @@
 <!--<script src='greeter.js'></script>-->
 <div id="main">
     <div id="main_left" style=" display: block; background: white">
+        <form id="form1" name="form1" method="post" action="php/insertdata.php"
+              onsubmit="JSON_test(this);return flase;" style="margin-left: 50px;margin-top: 20px" >
+            <label for="txt_name">»ú¹¹Ãû³Æ</label>
+
+            <p><input type="text" name="txt_name" id="txt_name"/></p>
+            <label for="txt_address">µØÖ·</label>
+
+            <p><input type="text" name="txt_address" id="txt_address"/></p>
+
+            <p><label for="txt_phone">µç»°</label></p>
+
+            <p><input type="text" name="txt_phone" id="txt_phone"/></p>
+
+            <p><label for="txt_x">x×ø±ê</label></p>
+
+            <p><input type="text" name="txt_x" id="txt_x"/></p>
+
+            <p><label for="txt_y">y×ø±ê</label></p>
+
+            <p><input type="text" name="txt_y" id="txt_y"/></p>
+
+            <p><label for="txt_description">ÃèÊö</label></p>
+
+            <p><input type="text" name="txt_description" id="txt_description"/></p>
+
+            <p><input type="text" name="txt_json" id="txt_json"/>
+                <label for="button"></label>
+                <input type="submit" name="button" id="button" value="JSON"/>
+            </p>
+        </form>
         <span id="age_text">111</span>
-        <span id="age">222</span>
-        <span id="hometown_text">333</span>
-        <span id="hometown">444</span>
     </div>
     <div id="map_container" style="width: 1048px; margin-left: 330px;"></div>
 </div>

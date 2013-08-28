@@ -2,13 +2,13 @@
 include_once("include/mysql_class.php");
 $mysql_server_name='localhost'; 
 //改成自己的mysql数据库服务器  
-$mysql_username='jinkeep'; 
+$mysql_username='jinkeeper';
 //改成自己的mysql数据库用户名  
 $mysql_password='kingsoft119'; 
 //改成自己的mysql数据库密码  
-$mysql_database='jinkeep';
+$mysql_database='jinkeeper';
  //改成自己的mysql数据库名  
-$mysql_table='bglab_wpassist_installinfo';
+$mysql_table='medicalservicedb';
  
 // $conn=mysql_connect($mysql_server_name,
 // $mysql_username,$mysql_password) or die('Could not connect'.mysql_error());

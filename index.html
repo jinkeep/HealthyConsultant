@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.1, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #main {
+            height: 100%
+        }
+    </style>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.2&key=6d095d1e079ad505e947d709d9389cc1">
+    </script>
+    <script type="text/javascript" async="" src="js/getdata.js"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var position = new AMap.LngLat(116.404, 39.915);//创建中心点坐标
+            var mapObj = new AMap.Map("map_container", {center: position});//创建地图实例
+            var marker = new AMap.Marker({
+                map: mapObj,
+                position: new AMap.LngLat(116.406326, 39.903942),
+                offset: new AMap.Pixel(-10, -34),
+                icon: "http://webapi.amap.com/images/0.png"
+            });// 自定义构造AMap.Marker对象
+            showUser();
+        }
+
+    </script>
+    <title>Healthy Consultant</title></head>
+<body onload="initialize()">
+<!--<script src='greeter.js'></script>-->
+<div id="main">
+    <div id="main_left" style=" display: block; background: white">
+        <span id="age_text">111</span>
+        <span id="age">222</span>
+        <span id="hometown_text">333</span>
+        <span id="hometown">444</span>
+    </div>
+    <div id="map_container" style="width: 1048px; margin-left: 330px;"></div>
+</div>
+
+</body>
+</html>

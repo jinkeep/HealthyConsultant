@@ -1,0 +1,19 @@
+#main_left {
+    width: 329px;
+    min-width: 329px;
+    _width: 329px;
+    height: 1000px;
+    border-right: 1px solid #cad2dd;
+    box-shadow: 1px 3px 4px 0 #828e9a;
+    z-index: 201;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+#map_container {
+    min-width: 630px;
+    position: relative;
+    margin-left: 330px
+}

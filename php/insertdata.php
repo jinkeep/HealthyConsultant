@@ -1,11 +1,11 @@
 ﻿<?php
+header("content-type:text/html; charset=utf-8");
 include_once("../include/mysql_class.php");
 
 $json = $_POST["txt_json"];
-if(ini_get("magic_quotes_gpc")=="1")
-    {
-        $json=stripslashes($json);
-    }
+if (ini_get("magic_quotes_gpc") == "1") {
+    $json = stripslashes($json);
+}
 
 $params = json_decode($json);
 //echo "!!!";
@@ -21,18 +21,19 @@ $params = json_decode($json);
 InsertOneRecord($params);
 //connect($obj->{'method'}, $params);
 
-function InsertOneRecord($params){
-    $mysql_server_name='localhost';
+function InsertOneRecord($params)
+{
+    $mysql_server_name = 'localhost';
 //改成自己的mysql数据库服务器
-    $mysql_username='jinkeeper';
+    $mysql_username = 'jinkeeper';
 //改成自己的mysql数据库用户名
-    $mysql_password='kingsoft119';
+    $mysql_password = 'kingsoft119';
 //改成自己的mysql数据库密码
-    $mysql_database='jinkeeper';
+    $mysql_database = 'jinkeeper';
     //改成自己的mysql数据库名
-    $mysql_table='medicalservicedb';
+    $mysql_table = 'medicalservicedb';
 
-    $db = new mysql($mysql_server_name, $mysql_username, $mysql_password, $mysql_database, "UTF-8");
+    $db = new mysql($mysql_server_name, $mysql_username, $mysql_password, $mysql_database, "utf8");
 
     //插入一条数据
     //echo $params->{'uid'};
@@ -48,7 +49,7 @@ function InsertOneRecord($params){
     $num = $db->num_rows($query);
 //    echo $num;
 
-    if ($num > 0) {
+    if ($num > 0 && $phone != "") {
         echo 'Exist!';
     } else {
         $result = $db->fn_insert($mysql_table, 'name,address,phone,x,y,description',
@@ -139,4 +140,5 @@ function CountInstallInfo($params)
     $db->close();
     echo "OK";
 }
+
 ?>

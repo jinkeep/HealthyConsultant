@@ -75,6 +75,7 @@ function keywordSearch_CallBack(data) {
     mapObj.setFitView();
     //document.getElementById("result").innerHTML = resultStr;
 }
+
 function TipContents(type, address, tel) {  //窗体内容
     if (type == "" || type == "undefined" || type == null || type == " undefined" || typeof type == "undefined") {
         type = "暂无";

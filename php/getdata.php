@@ -1,4 +1,5 @@
 ﻿<?php
+header("content-type:text/html; charset=utf-8");
 include_once("../include/mysql_class.php");
 $mysql_server_name = 'localhost';
 //改成自己的mysql数据库服务器  
@@ -13,6 +14,7 @@ $mysql_table = 'medicalservicedb';
 $db = mysql_connect($mysql_server_name, $mysql_username, $mysql_password)or die('Could not connect' . mysql_error());
 //echo '连接成功！';
 mysql_select_db($mysql_database, $db);
+mysql_query("SET NAMES 'utf8'");
 $sql = "SELECT * FROM $mysql_table";
 //mysql_query("SET NAMES 'utf8'");
 //$sql = "SELECT * FROM $mysql_table";

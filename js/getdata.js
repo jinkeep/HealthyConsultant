@@ -1,14 +1,12 @@
 var xmlHttp
 var baseUrl = "http://www.oneweibo.com/"
-function showUser() {
+function getHealthyServiceData() {
     xmlHttp = GetXmlHttpObject()
     if (xmlHttp == null) {
         alert("Browser does not support HTTP Request")
         return
     }
     var url = baseUrl + "php/getdata.php"
-//    url=url+"?q="+str
-//    url=url+"&sid="+Math.random()
     xmlHttp.onreadystatechange = stateChanged
     xmlHttp.open("GET", url, true)
     xmlHttp.send(null)
@@ -32,6 +30,7 @@ function showData(str) {
         string += arr[i]['id'] + ";\n";
         string += arr[i]['name'] + ";\n";
         string += arr[i]['address'] + ";\n";
+        string += arr[i]['phone'] + ";\n";
         string += arr[i]['x'] + ";\n";
         string += arr[i]['y'] + ";\n";
         string += arr[i]['description'] + ";\n";

@@ -32,7 +32,7 @@ function InsertOneRecord($params){
     //改成自己的mysql数据库名
     $mysql_table='medicalservicedb';
 
-    $db = new mysql($mysql_server_name, $mysql_username, $mysql_password, $mysql_database, "GBK");
+    $db = new mysql($mysql_server_name, $mysql_username, $mysql_password, $mysql_database, "UTF-8");
 
     //插入一条数据
     //echo $params->{'uid'};
@@ -44,7 +44,7 @@ function InsertOneRecord($params){
     $description = $params->{'description'};
 
 
-    $query = $db->query("SELECT * FROM $mysql_table WHERE name='$name' AND phone='$phone'");
+    $query = $db->query("SELECT * FROM $mysql_table WHERE name='$name' OR phone='$phone'");
     $num = $db->num_rows($query);
 //    echo $num;
 

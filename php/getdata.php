@@ -14,6 +14,7 @@ $db = mysql_connect($mysql_server_name, $mysql_username, $mysql_password)or die(
 //echo '连接成功！';
 mysql_select_db($mysql_database, $db);
 $sql = "SELECT * FROM $mysql_table";
+//mysql_query("SET NAMES 'utf8'");
 //$sql = "SELECT * FROM $mysql_table";
 $result = mysql_query($sql, $db);
 //$fields=mysql_list_fields($mysql_database,$mysql_table,$db); //列出test库friends表的信息

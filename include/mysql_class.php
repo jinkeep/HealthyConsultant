@@ -1,5 +1,5 @@
 <?php
-
+//header("content-type:text/html; charset=utf-8");
 class mysql
 {
     private $host;
@@ -23,6 +23,8 @@ class mysql
         $link = mysql_connect($this->host, $this->name, $this->pass) or die ($this->error());
         mysql_select_db($this->table, $link) or die("???????" . $this->table);
         mysql_query("SET NAMES '$this->ut'");
+        mysql_query("SET CHARACTER SET '$this->ut'");
+        mysql_query("SET CHARACTER_SET_RESULTS='$this->ut'");
     }
 
     function query($sql, $type = '')
@@ -84,6 +86,7 @@ class mysql
 
     function fn_insert($table, $name, $value)
     {
+//        mysql_query("SET NAMES 'utf8'");
         $this->query("insert into $table ($name) value ($value)");
     }
 }

@@ -1,6 +1,8 @@
 var mapObj;
 var marker = new Array();
 var windowsArr = new Array();
+
+
 function initialize_amap() {
     var position = new AMap.LngLat(116.404, 39.915);//创建中心点坐标
     mapObj = new AMap.Map("map_container", {center: position});//创建地图实例
@@ -31,15 +33,31 @@ function placeSearch(str) {
     });
 }
 
+//回调函数
+function keywordSearch_CallBack(data) {
+    var poiArr = data.poiList.pois;
+    addmarkers(poiArr);
+    mapObj.setFitView();
+}
+
+function addmarkers(poiArr) {
+    var resultCount = poiArr.length;
+    for (var i = 0; i < resultCount; i++) {
+//        resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://api.amap.com/webapi/static/Images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
+//        resultStr += TipContents(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";
+        addmarker(i, poiArr[i]);
+    }
+}
+
 //添加marker&infowindow
 function addmarker(i, d) {
     var lngX = d.location.getLng();
     var latY = d.location.getLat();
     var markerOption = {
         map: mapObj,
-        icon: "http://api.amap.com/webapi/static/Images/" + (i + 1) + ".png",
+        icon: "http://webapi.amap.com/images/marker_sprite.png",
+//        icon: "http://api.amap.com/webapi/static/Images/" + (i + 1) + ".png",
         position: new AMap.LngLat(lngX, latY)
-
     };
     var mar = new AMap.Marker(markerOption);
 
@@ -53,27 +71,21 @@ function addmarker(i, d) {
     });
     windowsArr.push(infoWindow);
     var aa = function (e) {
-        document.getElementById("txt_name").value = d.name;
-        document.getElementById("txt_address").value = d.address;
-        document.getElementById("txt_phone").value = d.tel;
-        document.getElementById("txt_description").value = d.type;
+        var txt_name=document.getElementById("txt_name");
+        if(txt_name!=null)
+            txt_name.value = d.name;
+        var txt_address=document.getElementById("txt_address");
+        if(txt_address!=null)
+            txt_address.value = d.address;
+        var txt_phone=document.getElementById("txt_phone");
+        if(txt_phone!=null)
+            txt_phone.value = d.tel;
+        var txt_description=document.getElementById("txt_description");
+        if(txt_description!=null)
+            txt_description.value = d.type;
         infoWindow.open(mapObj, mar.getPosition());
     };
     AMap.event.addListener(mar, "click", aa);
-}
-//回调函数
-function keywordSearch_CallBack(data) {
-    var resultStr = "";
-    var poiArr = data.poiList.pois;
-    var resultCount = poiArr.length;
-
-    for (var i = 0; i < resultCount; i++) {
-//        resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://api.amap.com/webapi/static/Images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
-//        resultStr += TipContents(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";
-        addmarker(i, poiArr[i]);
-    }
-    mapObj.setFitView();
-    //document.getElementById("result").innerHTML = resultStr;
 }
 
 function TipContents(type, address, tel) {  //窗体内容

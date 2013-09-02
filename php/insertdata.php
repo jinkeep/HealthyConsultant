@@ -50,7 +50,7 @@ function InsertOneRecord($params)
 //    echo $num;
 
     if ($num > 0 && $phone != "") {
-        echo 'Exist!';
+        echo '数据已存在!';
     } else {
         $result = $db->fn_insert($mysql_table, 'name,address,phone,x,y,description',
             "'$name','$address','$phone','$x','$y','$description'");

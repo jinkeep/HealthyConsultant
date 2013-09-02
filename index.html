@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="initial-scale=1.1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -21,8 +22,10 @@
         }
 
         function getXY(e) {
-            document.getElementById("txt_x").value = e.lnglat.getLng();
-            document.getElementById("txt_y").value = e.lnglat.getLat();
+            if (document.getElementById("txt_x") != null)
+                document.getElementById("txt_x").value = e.lnglat.getLng();
+            if (document.getElementById("txt_y") != null)
+                document.getElementById("txt_y").value = e.lnglat.getLat();
         }
 
         function JSON_test(o) {
@@ -48,39 +51,39 @@
 <!--</div>-->
 <div id="main">
     <!--<div id="main_left" style=" display: block;">-->
-        <!--<form id="form1" name="form1" method="post" action="php/insertdata.php"-->
-              <!--onsubmit="JSON_test(this);return flase;" style="margin-left: 50px;margin-top: 20px">-->
-            <!--<label for="txt_name">机构名称</label>-->
+    <!--<form id="form1" name="form1" method="post" action="php/insertdata.php"-->
+    <!--onsubmit="JSON_test(this);return flase;" style="margin-left: 50px;margin-top: 20px">-->
+    <!--<label for="txt_name">机构名称</label>-->
 
-            <!--<p><input type="text" name="txt_name" id="txt_name"/></p>-->
-            <!--<label for="txt_address">地址</label>-->
+    <!--<p><input type="text" name="txt_name" id="txt_name"/></p>-->
+    <!--<label for="txt_address">地址</label>-->
 
-            <!--<p><input type="text" name="txt_address" id="txt_address"/></p>-->
+    <!--<p><input type="text" name="txt_address" id="txt_address"/></p>-->
 
-            <!--<p><label for="txt_phone">电话</label></p>-->
+    <!--<p><label for="txt_phone">电话</label></p>-->
 
-            <!--<p><input type="text" name="txt_phone" id="txt_phone"/></p>-->
+    <!--<p><input type="text" name="txt_phone" id="txt_phone"/></p>-->
 
-            <!--<p><label for="txt_x">x坐标</label></p>-->
+    <!--<p><label for="txt_x">x坐标</label></p>-->
 
-            <!--<p><input type="text" name="txt_x" id="txt_x"/></p>-->
+    <!--<p><input type="text" name="txt_x" id="txt_x"/></p>-->
 
-            <!--<p><label for="txt_y">y坐标</label></p>-->
+    <!--<p><label for="txt_y">y坐标</label></p>-->
 
-            <!--<p><input type="text" name="txt_y" id="txt_y"/></p>-->
+    <!--<p><input type="text" name="txt_y" id="txt_y"/></p>-->
 
-            <!--<p><label for="txt_description">描述</label></p>-->
+    <!--<p><label for="txt_description">描述</label></p>-->
 
-            <!--<p><input type="text" name="txt_description" id="txt_description"/></p>-->
+    <!--<p><input type="text" name="txt_description" id="txt_description"/></p>-->
 
-            <!--<p><input type="text" name="txt_json" id="txt_json"/>-->
-                <!--<label for="button"></label>-->
-                <!--<input type="submit" name="button" id="button" value="JSON"/>-->
-            <!--</p>-->
-        <!--</form>-->
-        <!--<span id="age_text">111</span>-->
+    <!--<p><input type="text" name="txt_json" id="txt_json"/>-->
+    <!--<label for="button"></label>-->
+    <!--<input type="submit" name="button" id="button" value="JSON"/>-->
+    <!--</p>-->
+    <!--</form>-->
+    <!--<span id="age_text">111</span>-->
     <!--</div>-->
-    <div id="map_container" style="margin-left: 0px  " ></div>
+    <div id="map_container" style="margin-left: 0px  "></div>
 </div>
 
 </body>

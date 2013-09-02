@@ -36,7 +36,7 @@
                 description: document.getElementById('txt_description').value
             }
             var json_string = JSON.stringify(user);
-            document.getElementById('txt_json').value = json_string;
+            document.getElementById('txt_json').value = json_string.trim();
             o.submit();
         }
         function FSubmit(e)

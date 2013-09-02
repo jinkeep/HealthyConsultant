@@ -23,6 +23,11 @@ function stateChanged() {
 //}
 
 function showData(str) {
+    document.getElementById('age_text').innerHTML = str;
+    str=str.trim();
+//    str='﻿{"id":"56","name":"1","address":"2","phone":"3","x":"4","y":"5","description":"6"},{"id":"57","name":"a","address":"b","phone":"c","x":"d","y":"e","description":"f"}';
+//    str='{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
+   //str = JSON.stringify(str);
     var arr = JSON.parse(str);
     var string = "";
     // var onerow = arr[0]
